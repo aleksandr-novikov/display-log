@@ -21,7 +21,7 @@ Just paste the following code snippet inside the header of your page.
 
 Initializes display logger and puts panel on the page.
 
-####settings object
+#### settings object
 | Property  	| Type   	| Default              	| Description                  	|
 |-----------	|--------	|----------------------	|------------------------------	|
 | bgColor   	| string 	| 'rgba(0, 0, 0, 0.4)' 	| Panel background color       	|
