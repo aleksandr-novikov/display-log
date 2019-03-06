@@ -1,0 +1,25 @@
+{
+  "name": "display-log",
+  "version": "1.0.0",
+  "description": "Displays log messages over screen.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksandr-novikov/display-log.git"
+  },
+  "keywords": [
+    "display",
+    "console",
+    "page",
+    "log"
+  ],
+  "author": "Aleksandr Novikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aleksandr-novikov/display-log/issues"
+  },
+  "homepage": "https://github.com/aleksandr-novikov/display-log#readme"
+}
