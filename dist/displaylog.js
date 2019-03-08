@@ -39,12 +39,12 @@
         const panel = createPanel(mergedSettings);
         document.body.appendChild(panel);
 
-        const logOnPanel = log(panel);
-        console.warn = logOnPanel(TYPE_WARN, mergedSettings);
-        console.log = logOnPanel(TYPE_LOG, mergedSettings);
-        console.info = logOnPanel(TYPE_INFO, mergedSettings);
-        console.error = logOnPanel(TYPE_ERROR, mergedSettings);
-        console.clear = clear(panel)(TYPE_CLEAR, mergedSettings);
+        const logOnPanelWithSettings = log(panel)(mergedSettings);
+        console.warn = logOnPanelWithSettings(TYPE_WARN);
+        console.log = logOnPanelWithSettings(TYPE_LOG);
+        console.info = logOnPanelWithSettings(TYPE_INFO);
+        console.error = logOnPanelWithSettings(TYPE_ERROR);
+        console.clear = clear(panel)(mergedSettings)(TYPE_CLEAR);
     };
 
     const createPanel = settings => {
@@ -95,12 +95,12 @@
 
     const open = panel => panel.style.top = '0';
 
-    const log = panel => (logType, settings) => (...args) => {
+    const log = panel => settings => logType => (...args) => {
         originalLog(logType, ...args);
         customLog(panel, logType, settings, ...args);
     };
 
-    const clear = panel => (logType, settings) => () => {
+    const clear = panel => settings => logType => () => {
         originalLog(logType);
         panel.innerHTML = '';
         if (settings.closable) appendToggle(panel, settings);
