@@ -26,6 +26,7 @@ Initializes display logger and puts panel on the page.
 |-----------	|--------	|----------------------	|------------------------------	|
 | bgColor   	| string 	| 'rgba(0, 0, 0, 0.4)' 	| Panel background color       	|
 | textColor 	| string 	| '#fff'               	| Color of text messages       	|
+| fontStyle  	| string 	| 'Courier New'         | Font style                   	|
 | fontSize  	| string 	| '1em'                	| Font size                    	|
 | padding   	| string 	| '0.5vw'              	| Padding of text messages     	|
 | maxHeight 	| string 	| '30vh'               	| Maximum console height       	|
