@@ -11,7 +11,7 @@ Can be useful for debugging on mobile phones or if you want to save some screen 
 Paste the following code snippet after the body tag of your page.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/aleksandr-novikov/display-log@1.0.0/dist/displaylog.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/aleksandr-novikov/display-log@1.1.0/dist/displaylog.min.js"></script>
 <script> displayLog.init(); </script>
 ```
 
