@@ -1,6 +1,6 @@
 # Display.log
 
-Display.log duplicates your console messages over the page.
+Display.log mirrors your console messages over the page.
 
 Can be useful for debugging on mobile phones or if you want to save some screen space by keeping developer console closed.
 
@@ -8,7 +8,7 @@ Can be useful for debugging on mobile phones or if you want to save some screen 
 
 ## Usage
 
-Just paste the following code snippet inside the header of your page.
+Paste the following code snippet after the body tag of your page.
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/aleksandr-novikov/display-log@1.0.0/dist/displaylog.min.js"></script>

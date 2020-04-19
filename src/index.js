@@ -20,10 +20,14 @@
         bgColor: 'rgba(0, 0, 0, 0.4)',
         textColor: '#fff',
         fontSize: '1em',
+        fontFamily: 'Courier New, sans-serif',
         padding: '0.5vw',
         maxHeight: '30vh',
         closable: true
     };
+
+    const openedToggleTitle = 'Console &#x25B2;';
+    const closedToggleTitle = 'Console &#x25BC;';
 
     const originalConsole = {
         [TYPE_LOG]: console.log,
@@ -37,7 +41,11 @@
         const mergedSettings = {...settings, ...customSettings};
 
         const panel = createPanel(mergedSettings);
-        document.body.appendChild(panel);
+        if (document.body) {
+            document.body.appendChild(panel);
+        } else {
+            throw new Error('Please insert this script after <body> tag');
+        }
 
         const logOnPanelWithSettings = log(panel)(mergedSettings);
         console.warn = logOnPanelWithSettings(TYPE_WARN);
@@ -54,9 +62,11 @@
             color: settings.textColor,
             backgroundColor: settings.bgColor,
             fontSize: settings.fontSize,
+            fontFamily: settings.fontFamily,
             width: '100vw',
             position: 'fixed',
             top: '0',
+            left: '0',
             overflow: 'auto',
             maxHeight: settings.maxHeight,
             zIndex: Number.MAX_SAFE_INTEGER
@@ -76,24 +86,30 @@
 
         Object.assign(toggle.style, {
             textAlign: 'center',
+            cursor: 'pointer',
             paddingTop: settings.padding,
             paddingBottom: settings.padding
         });
 
-        toggle.innerHTML = 'console &#8691;';
-        toggle.addEventListener('click', togglePanel(panel));
+        toggle.innerHTML = openedToggleTitle;
+        toggle.addEventListener('click', togglePanel(panel, toggle));
 
         panel.appendChild(toggle);
     };
 
-    const togglePanel = panel => () => isClosed(panel) ? open(panel) : close(panel);
+    const togglePanel = (panel, toggle) => () => isClosed(panel) ? open(panel, toggle) : close(panel, toggle);
 
     const isClosed = panel => panel.style.top.slice(0, 1) === '-';
 
-    const close = panel =>
+    const close = (panel, toggle) => {
+        toggle.innerHTML = closedToggleTitle;
         panel.style.top = panel.scrollHeight / panel.children.length - panel.clientHeight + 'px';
+    }
 
-    const open = panel => panel.style.top = '0';
+    const open = (panel, toggle) => {
+        toggle.innerHTML = openedToggleTitle;
+        panel.style.top = '0';
+    }
 
     const log = panel => settings => logType => (...args) => {
         originalLog(logType, ...args);
