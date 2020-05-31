@@ -141,6 +141,7 @@
     line.textContent = `[console.${logType}]: ${message}`;
 
     addElementOnPanel(panel)(line)(settings);
+    panelScrollTop(panel);
   };
 
   const panelScrollTop = (panel) =>
@@ -154,8 +155,6 @@
     } else {
       panel.appendChild(element);
     }
-
-    panelScrollTop(panel);
   };
 
   return {
